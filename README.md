@@ -1,6 +1,21 @@
 # Python Flask Demo Oracle
 A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
+The python-flask-demo-oracle repository contains a simple Flask application that demonstrates how to connect to an Oracle Autonomous database (or any other Oracle Database) and perform basic CRUD (Create, Read, Update, Delete) operations on a database table.
+
+The application consists of a single Flask app defined in the main.py file, which serves as the entry point for the application. The main.py file defines several Flask routes (i.e. URL endpoints) that handle HTTP requests from clients and return HTTP responses.
+
+The main features of the application are:
+
+    Database connection: The app connects to an Oracle database using the python-oracldb library and a DSN (Data Source Name) string that specifies the hostname, port, service name, username, and password for the database connection.
+
+    CRUD operations: The app allows users to perform basic CRUD operations on a database table called employees. Users can add new employees, view all employees, update employee information, and delete employees.
+
+    SSL/TLS encryption: The app uses SSL/TLS encryption to secure HTTP traffic between the client and server. You can use self-signed SSL certificates, and the Flask app is configured to use this certificate to encrypt HTTP traffic.
+
+The repository also contains several HTML templates that define the app's user interface. The base.html template defines the basic layout of the app, while the other templates extend this base template and define the content for specific pages (e.g. the add employee form, the view employees page, etc.).
+
+
 ## Quick Build & Deploy with Docker (Recommended)
 #### 1. Clone the Repo
 

@@ -13,7 +13,7 @@ CORS(app)
 VALID_USERS = {'user1': 'password1', 'user2': 'password2'}
 
 # Connect to the Oracle database
-con = cx_Oracle.connect(user='admin', password='RAbbithole1234#_',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=g9b8049aad9c64c_y16fuv7vqq9428l5_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
+con = cx_Oracle.connect(user='admin', password='**********',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=*********.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
 
 @app.route('/api/employees', methods=['GET'])
 def get_employees():

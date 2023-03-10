@@ -125,9 +125,14 @@ $ python3 ~/oracle_flask_v3.py
 https://10.180.1.21:4443/api/add_employee
 ```
 
+<img width="1565" alt="Screen Shot 2023-03-10 at 5 41 47 pm" src="https://user-images.githubusercontent.com/39692236/224242781-e933f11f-5bf2-4970-a89e-f868e0cfb898.png">
+
+
 ### Test Get All Employees using Webpage
 
 ```
 https://10.180.1.21:4443/api/getall
 ```
+
+<img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224242815-7c833817-836d-493e-bb68-939e721c3b17.png">
 

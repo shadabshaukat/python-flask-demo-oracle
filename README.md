@@ -51,36 +51,8 @@ CREATE TABLE employees (
 );
 ```
 
-### 4. Functions & APIs
 
-This is the core python3 code to create a web server with Flask and add the routes for the API’s on the employees table in Oracle.
-
-There are 6 functions in the script, each performing a REST call for GET, PUT, POST and DELETE operations. I’ve included an additional function to add an employee using html form via render_template
-
-```
-GET ALL - def get_employees(): 
-/* Fetches all the employees from Oracle table eg :  curl https://10.180.1.21:4443/api/employees -k */
-
-GET EMP - def get_employee(id):
-/* Fetches a single employee using the id and throws error 404 if employee not found eg : curl https://10.180.1.21:4443/api/employees/1 -k */
-
-ADD EMP - def add_employee():
-/* Adds an employee to the Oracle table and throws error if the same email already exists eg :  curl -X POST https://10.180.1.21:4443/api/employees -d '{"name":"Shadab M","email":"shadabm@example.com","department":"IT"}' -H "Content-Type: application/json" -k */
-
-UPDATE EMP - def update_employee(id):
-/* Updates an employee details but throws 404 error if employee id does not exist eg : curl -X PUT https://10.180.1.21:4443/api/employees/1 -d '{"name":"Michael","email":"michaelm@example.com","department":"IT"}' -H "Content-Type: application/json" -k */
-
-DELETE EMP - def delete_employee(id):
-/* Deletes an employee but throws 404 error if employee not found */ 
-
-GET EMP BY EMAIL - def search_employee(email):
-/* Search an employee by their email address, if employee email is not found it returns 404 error eg :curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k */ 
-
-ADD EMP USING HTML FORM - def add_employee_form():
-/* Add an employee using an html form with the Jinga2 flask render_template. The render_template function is used to render an HTML template called "add_employee.html" that contains the form. */
-```
-
-### 5. Change path for template_folder in main.py to reflect the local directory where .html files and code is stored :
+### 4. Change path for template_folder in main.py to reflect the local directory where .html files and code is stored :
 
 
 ```
@@ -89,14 +61,14 @@ app = Flask(__name__, template_folder='<your local directory>')
 
 This will allow two web pages one for the POST request to the “/api/add_employee” endpoint and another for getting a list of all employees in the databases via "/api/getall"
 
-### 6. Change path for SSL certificates in main.py file to location of SSL certificates created in Step 2.
+### 5. Change path for SSL certificates in main.py file to location of SSL certificates created in Step 2.
 
 ```
     app.run(host='0.0.0.0', port=4443, ssl_context=('/home/opc/ssl-certs/cert.pem', '/home/opc/ssl-certs/key.pem'))
 ```
 
 
-## Test APIs using curl
+## Test APIs with cmdline curl
 
 Run the Python script and Test the API’s using curl
 
@@ -139,7 +111,7 @@ curl https://10.180.1.21:4443/api/employees/1 -k
  curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k
 ```
 
-### Test APIs using HTML Form and Report
+## Test APIs using HTML Form and Report
 
 ```
 https://10.180.1.21:4443/api/add_employee
@@ -155,4 +127,34 @@ https://10.180.1.21:4443/api/getall
 ```
 
 <img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224242815-7c833817-836d-493e-bb68-939e721c3b17.png">
+
+
+## Functions & APIs
+
+This is the core python3 code to create a web server with Flask and add the routes for the API’s on the employees table in Oracle.
+
+There are 6 functions in the script, each performing a REST call for GET, PUT, POST and DELETE operations. I’ve included an additional function to add an employee using html form via render_template
+
+```
+GET ALL - def get_employees(): 
+/* Fetches all the employees from Oracle table eg :  curl https://10.180.1.21:4443/api/employees -k */
+
+GET EMP - def get_employee(id):
+/* Fetches a single employee using the id and throws error 404 if employee not found eg : curl https://10.180.1.21:4443/api/employees/1 -k */
+
+ADD EMP - def add_employee():
+/* Adds an employee to the Oracle table and throws error if the same email already exists eg :  curl -X POST https://10.180.1.21:4443/api/employees -d '{"name":"Shadab M","email":"shadabm@example.com","department":"IT"}' -H "Content-Type: application/json" -k */
+
+UPDATE EMP - def update_employee(id):
+/* Updates an employee details but throws 404 error if employee id does not exist eg : curl -X PUT https://10.180.1.21:4443/api/employees/1 -d '{"name":"Michael","email":"michaelm@example.com","department":"IT"}' -H "Content-Type: application/json" -k */
+
+DELETE EMP - def delete_employee(id):
+/* Deletes an employee but throws 404 error if employee not found */ 
+
+GET EMP BY EMAIL - def search_employee(email):
+/* Search an employee by their email address, if employee email is not found it returns 404 error eg :curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k */ 
+
+ADD EMP USING HTML FORM - def add_employee_form():
+/* Add an employee using an html form with the Jinga2 flask render_template. The render_template function is used to render an HTML template called "add_employee.html" that contains the form. */
+```
 

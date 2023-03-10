@@ -4,32 +4,53 @@ A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 ## Quick Deploy with Docker
 
 ```
-git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
+# Clone the Repo
 
-cd python-flask-demo-oracle/
+  git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
+  cd python-flask-demo-oracle/
+  ```
 
-openssl genrsa -out key.pem 2048
+```
+# Generate the self-signed certificates
 
-openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
-
+  openssl genrsa -out key.pem 2048
+  openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
+  ```
+  
+```
 # Check for certificate and key file
-ls -ltr
 
+  ls -ltr
+  ```
+  
+```
 # Change username,password & connection string in main.py with your Autonomous DB details
-vim main.py
 
-# Enable port 4443 on local machine where you are running docker
-sudo firewall-cmd --permanent --add-port=4443/tcp
+  vim main.py
+  ```
 
-# Build the Image
-docker build -t flaskdemo .
+```
+# Enable port 4443 on local machine where you are running Docker
 
-# Run the Image
-docker run -p 4443:4443 flaskdemo
+  sudo firewall-cmd --permanent --add-port=4443/tcp
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --permanent --list-ports
+  ```
+
+```
+# Build the Docker Image
+
+  docker build -t flaskdemo .
+  ```
+
+```
+# Run the Docker Container
+
+  docker run -p 4443:4443 flaskdemo
 
 ```
 
-## Linux VM Deploy
+## Oracle Linux VM Deploy
 
 ### 1. Install Python 3.6, flask , cx_Oracle, Jinga2 & six packages on Oracle Linux 7
 
@@ -63,6 +84,8 @@ openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
 chmod +r cert.pem key.pem
 
 sudo firewall-cmd --permanent --add-port=4443/tcp
+sudo firewall-cmd --reload
+sudo firewall-cmd --zone=public --permanent --list-ports
 ```
 
 ### 3. Deploy the Oracle Table

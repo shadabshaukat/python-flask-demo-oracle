@@ -11,6 +11,7 @@ First pre-requisite is to ensure your instance has Python3 installed along with 
   sudo yum install python36
   sudo yum install links
   sudo pip3 install flask
+  sudo pip3 install flask_cors
   sudo pip3 install six
   sudo pip3 install Jinja2
   sudo pip3 install oracledb

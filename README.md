@@ -15,6 +15,7 @@ A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
   openssl genrsa -out key.pem 2048
   openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
+  chmod +r cert.pem key.pem
   ```
   
 ```

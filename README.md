@@ -5,13 +5,17 @@ A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
 ```
 #Clone the Repo
+
 git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
+
 cd python-flask-demo-oracle/
 ```
 
 ```
 #Generate the self-signed certificates
+
 openssl genrsa -out key.pem 2048
+
 openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
 
 chmod +r cert.pem key.pem
@@ -19,16 +23,19 @@ chmod +r cert.pem key.pem
   
 ```
 #Check for certificate and key file
+
 ls -ltr
 ```
   
 ```
 #Change username,password & connection string in main.py with your Autonomous DB details
+
 vim main.py
 ```
 
 ```
 #Create table in Autonomous DB
+
 CREATE TABLE employees (
     id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR2(255) NOT NULL,
@@ -39,6 +46,7 @@ CREATE TABLE employees (
 
 ```
 #Enable port 4443 on local machine where you are running Docker
+
 sudo firewall-cmd --permanent --add-port=4443/tcp
 sudo firewall-cmd --reload
 sudo firewall-cmd --zone=public --permanent --list-ports
@@ -46,11 +54,13 @@ sudo firewall-cmd --zone=public --permanent --list-ports
 
 ```
 #Build the Docker Image
+
 docker build -t oracleflaskdemo .
 ```
 
 ```
 #Run the Docker Container
+
 docker run -p 4443:4443 oracleflaskdemo
 ```
 

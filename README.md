@@ -51,12 +51,15 @@ CREATE TABLE employees (
 );
 ```
 
-### 4. Clone the Repo
+### 4. Clone the Repo & Install Python Packages 
 
 ```
 git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
 
 cd python-flask-demo-oracle/
+
+pip3 install -r requirements.txt
+
 ```
 
 

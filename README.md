@@ -51,6 +51,13 @@ CREATE TABLE employees (
 );
 ```
 
+### 5. Clone the Repo
+
+```
+git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
+```
+
+
 
 ### 4. Change path for template_folder in main.py to reflect the local directory where .html files and code is stored :
 

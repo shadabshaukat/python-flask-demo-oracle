@@ -1,4 +1,4 @@
-# python-flask-demo-oracle
+# Python Flask Demo Oracle
 A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
 ## Deploy

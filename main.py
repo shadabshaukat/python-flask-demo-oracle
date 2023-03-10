@@ -3,15 +3,17 @@ import flask
 from flask import Flask, jsonify, request
 from flask import render_template
 from flask_cors import CORS
+from flask import session, redirect, url_for, request, Response
 import oracledb as cx_Oracle
 
 app = Flask(__name__, template_folder='/home/opc/python-flask-demo-oracle')
 CORS(app)
 
+# List of API User and Auth Token
+VALID_USERS = {'user1': 'password1', 'user2': 'password2'}
+
 # Connect to the Oracle database
-con = cx_Oracle.connect(user='admin', password='*****************',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=*************_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
-
-
+con = cx_Oracle.connect(user='admin', password='RAbbithole1234#_',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=g9b8049aad9c64c_y16fuv7vqq9428l5_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
 
 @app.route('/api/employees', methods=['GET'])
 def get_employees():
@@ -67,9 +69,14 @@ def search_employee(email):
     # Return the employee data
     return jsonify({'id': id, 'name': name, 'email': email, 'department': department}), 200
 
-
+# HTML Form Method to Create a New Employee
 @app.route('/api/add_employee', methods=['GET', 'POST'])
 def add_employee_form():
+    # Require authentication for all requests
+    auth = request.authorization
+    if not auth or not check_auth(auth.username, auth.password):
+        return authenticate()
+
     if request.method == 'POST':
         # Extract the employee data from the form
         name = request.form['name']
@@ -88,8 +95,14 @@ def add_employee_form():
         return render_template('add_employee.html')
 
 
+# HTML Method to Get a List of All Employees
 @app.route('/api/getall')
 def get_all():
+    # Require authentication for all requests
+    auth = request.authorization
+    if not auth or not check_auth(auth.username, auth.password):
+        return authenticate()
+
     cur = con.cursor()
     cur.execute("SELECT * FROM employees")
     rows = cur.fetchall()
@@ -98,6 +111,16 @@ def get_all():
         employee = {'id': row[0], 'name': row[1], 'email': row[2], 'department': row[3]}
         employees.append(employee)
     return render_template('get_employees.html', employees=employees)
+
+def check_auth(username, password):
+    """Check if a username/password combination is valid."""
+    return username in VALID_USERS and password == VALID_USERS[username]
+
+def authenticate():
+    """Send a 401 Unauthorized response that prompts the user to authenticate."""
+    return Response('Could not verify your access level for that URL.\n'
+                    'You have to login with proper credentials', 401,
+                    {'WWW-Authenticate': 'Basic realm="Login Required"'})
 
 
 @app.route('/api/employees', methods=['POST'])

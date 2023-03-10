@@ -1,2 +1,4 @@
 flask
+six
+Jinja2
 oracledb

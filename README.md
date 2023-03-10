@@ -51,7 +51,7 @@ CREATE TABLE employees (
 );
 ```
 
-### 4. Main Python code
+### 4. Functions & APIs
 
 This is the core python3 code to create a web server with Flask and add the routes for the API’s on the employees table in Oracle.
 
@@ -139,7 +139,7 @@ $ python3 ~/oracle_flask_v3.py
  curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k
 ```
 
-Test Add Employee API using a HTML form
+### Test Add Employee API using a HTML form
 
 ```
 links https://10.180.1.21:4443/api/add_employee

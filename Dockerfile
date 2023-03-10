@@ -15,8 +15,6 @@ RUN yum install -y postgresql-devel
 RUN yum install -y gcc \
     && yum install -y libaio-devel
 
-RUN mkdir /app
-
 ADD requirements.txt .
 COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
@@ -26,12 +24,13 @@ RUN pip3 install -r requirements.txt
 ENV LD_LIBRARY_PATH /usr/lib/oracle/19.10/client64/lib/
 
 ADD main.py .
-COPY main.py ./main.py
 
 ADD key.pem .
-COPY key.pem ./key.pem
 
 ADD cert.pem .
-COPY cert.pem ./cert.pem
+
+ADD add_employee.html .
+
+ADD get_employees.html .
 
 CMD ["python3", "./main.py"]

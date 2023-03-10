@@ -9,7 +9,7 @@ app = Flask(__name__, template_folder='/home/opc')
 CORS(app)
 
 # Connect to the Oracle database
-con = cx_Oracle.connect(user='admin', password='YourPassword1234#_',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.**********.oraclecloud.com))(connect_data=(service_name=*********_high.****.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
+con = cx_Oracle.connect(user='admin', password='RAbbithole1234#_',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=g9b8049aad9c64c_y16fuv7vqq9428l5_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
 
 
 
@@ -86,6 +86,19 @@ def add_employee_form():
         return jsonify({'id': cur.lastrowid}), 201
     else:
         return render_template('add_employee.html')
+
+
+@app.route('/api/getall')
+def get_all():
+    cur = con.cursor()
+    cur.execute("SELECT * FROM employees")
+    rows = cur.fetchall()
+    employees = []
+    for row in rows:
+        employee = {'id': row[0], 'name': row[1], 'email': row[2], 'department': row[3]}
+        employees.append(employee)
+    return render_template('get_employees.html', employees=employees)
+
 
 @app.route('/api/employees', methods=['POST'])
 def add_employee():

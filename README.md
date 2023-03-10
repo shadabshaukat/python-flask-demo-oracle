@@ -71,13 +71,16 @@ podman run -p 4443:4443 oracleflaskdemo
 
 ## Test APIs with HTML Form and Report
 
+#### Open in browser
+
 ```
 https://127.0.0.1:4443/api/add_employee
 ```
 
+#### Enter API Username & Password
 ```
-username : user1
-password : password1
+Username : user1
+Password : password1
 ```
 
 
@@ -90,14 +93,15 @@ password : password1
 
 ### Test Get All Employees with HTML
 
-
+#### Open in browser
 ```
 https://127.0.0.1:4443/api/getall
 ```
 
+#### Enter API Username & Password
 ```
-username : user2
-password : password2
+Username : user2
+Password : password2
 ```
 
 <img width="396" alt="Screen Shot 2023-03-10 at 7 22 49 pm" src="https://user-images.githubusercontent.com/39692236/224262583-0fe55a7f-5867-4adc-a493-5370e862f5bd.png">

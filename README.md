@@ -51,15 +51,17 @@ CREATE TABLE employees (
 );
 ```
 
-### 5. Clone the Repo
+### 4. Clone the Repo
 
 ```
 git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
+
+cd python-flask-demo-oracle/
 ```
 
 
 
-### 4. Change path for template_folder in main.py to reflect the local directory where .html files and code is stored :
+### 5. Change path for template_folder in main.py to reflect the local directory where .html files and code is stored :
 
 
 ```
@@ -68,21 +70,22 @@ app = Flask(__name__, template_folder='<your local directory>')
 
 This will allow two web pages one for the POST request to the “/api/add_employee” endpoint and another for getting a list of all employees in the databases via "/api/getall"
 
-### 5. Change path for SSL certificates in main.py file to location of SSL certificates created in Step 2.
+### 6. Change path for SSL certificates in main.py file to location of SSL certificates created in Step 2.
 
 ```
     app.run(host='0.0.0.0', port=4443, ssl_context=('/home/opc/ssl-certs/cert.pem', '/home/opc/ssl-certs/key.pem'))
 ```
 
-
-## Test APIs with cmdline curl
-
-Run the Python script and Test the API’s using curl
+### 7. Run the Python script
 
 ```
-$ python3 ~/main.py 
+$ python3 main.py 
          * Running on https://10.180.1.21:4443/ (Press CTRL+C to quit)
  ```
+
+
+## Test APIs with curl
+
 
 ```
 # Get report of all employees 

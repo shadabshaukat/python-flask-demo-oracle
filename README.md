@@ -3,7 +3,7 @@ A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
 ## Deploy
 
-### 1. Install Python 3 and the flask , cx_Oracle, Jinga2 & six packages
+### 1. Install Python 3.6, flask , cx_Oracle, Jinga2 & six packages on Oracle Linux 7
 
 First pre-requisite is to ensure your instance has Python3 installed along with the Python packages. We will also install the command-line browser links to test the API using a html form.
 

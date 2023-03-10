@@ -64,7 +64,13 @@ docker build -t oracleflaskdemo .
 docker run -p 4443:4443 oracleflaskdemo
 ```
 
-#### Note : If you are using Podman instead of Docker, just replaced 'docker' with 'podman' in the last 2 commands
+#### Note : If you are using Podman instead of Docker, just replaced 'docker' with 'podman' in the commands
+```
+brew install podman
+podman machine init
+podman build -t oracleflaskdemo .
+podman run -p 4443:4443 oracleflaskdemo
+```
 
 ## Oracle Linux VM Deploy 
 

@@ -13,6 +13,7 @@ cd python-flask-demo-oracle/
 #Generate the self-signed certificates
 openssl genrsa -out key.pem 2048
 openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
+
 chmod +r cert.pem key.pem
 ```
   

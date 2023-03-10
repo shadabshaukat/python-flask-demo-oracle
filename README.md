@@ -38,7 +38,7 @@ chmod +r cert.pem key.pem
 sudo firewall-cmd --permanent --add-port=4443/tcp
 ```
 
-### 3. Deploy the Oracle Table, Sequence and Trigger
+### 3. Deploy the Oracle Table
 
 The example uses a simple table called employees in the hr schema. An identity column is used to auto-increment the id of the employee
 
@@ -80,48 +80,15 @@ ADD EMP USING HTML FORM - def add_employee_form():
 /* Add an employee using an html form with the Jinga2 flask render_template. The render_template function is used to render an HTML template called "add_employee.html" that contains the form. */
 ```
 
-### 5. Create a HTML file in location
+### 5. Change path in main.py to reflect the local directory :
 
-The html file should be created in location for eg:
-
-```
-app = Flask(__name__, template_folder='/home/opc')
-```
-
-This will send the POST request to the “/api/add_employee” endpoint using function add_employee_form(). Save this file with name ’add_employee.html’
-
-vim /home/opc/add_employee.html
 
 ```
-<!-- Use Bootstrap for styling -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-<!-- Create a banner -->
-<div class="jumbotron">
-  <h1 class="display-4">Employee Management System</h1>
-  <p class="lead">Add new employees to the system</p>
-</div>
-
-<!-- Use a container to center the form -->
-<div class="container">
-  <form action="/api/add_employee" method="post">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" required>
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-      <label for="department">Department:</label>
-      <input type="text" class="form-control" id="department" name="department" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Add Employee</button>
-  </form>
-</div>
-
+app = Flask(__name__, template_folder='<your local directory>')
 ```
+
+This will allow two web pages one for the POST request to the “/api/add_employee” endpoint and another for getting a list of all employees in the databases via "/api/getall"
+
 
 ## Test
 
@@ -152,8 +119,15 @@ $ python3 ~/oracle_flask_v3.py
  curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k
 ```
 
-### Test Add Employee API using a HTML form
+### Test Add Employee API using Webpage
 
 ```
-links https://10.180.1.21:4443/api/add_employee
+https://10.180.1.21:4443/api/add_employee
 ```
+
+### Test Get All Employees using Webpage
+
+```
+https://10.180.1.21:4443/api/getall
+```
+

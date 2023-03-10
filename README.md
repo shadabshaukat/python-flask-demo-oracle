@@ -64,6 +64,8 @@ docker build -t oracleflaskdemo .
 docker run -p 4443:4443 oracleflaskdemo
 ```
 
+#### Note : If you are using Podman instead of Docker, just replaced 'docker' with 'podman' in the last 2 commands
+
 ## Oracle Linux VM Deploy 
 
 ### 1. Install Python 3.6, flask , cx_Oracle, Jinga2 & six packages on Oracle Linux 7

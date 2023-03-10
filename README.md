@@ -1,7 +1,7 @@
 # Python Flask Demo Oracle
 A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
-## Quick Deploy with Docker
+## Quick Build & Deploy with Docker (Recommended)
 
 ```
 #Clone the Repo
@@ -53,7 +53,7 @@ docker build -t oracleflaskdemo .
 docker run -p 4443:4443 oracleflaskdemo
 ```
 
-## Oracle Linux VM Deploy
+## Oracle Linux VM Deploy 
 
 ### 1. Install Python 3.6, flask , cx_Oracle, Jinga2 & six packages on Oracle Linux 7
 

@@ -75,7 +75,7 @@ This will allow two web pages one for the POST request to the “/api/add_employ
 ### 6. Change path for SSL certificates in main.py file to location of SSL certificates created in Step 2.
 
 ```
-    app.run(host='0.0.0.0', port=4443, ssl_context=('/home/opc/ssl-certs/cert.pem', '/home/opc/ssl-certs/key.pem'))
+    app.run(host='0.0.0.0', port=4443, ssl_context=('cert.pem', 'key.pem'))
 ```
 
 ### 7. Run the Python script

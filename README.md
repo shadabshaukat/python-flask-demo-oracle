@@ -121,23 +121,24 @@ curl https://10.180.1.21:4443/api/employees/1 -k
  curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k
 ```
 
-## Test APIs using HTML Form and Report
+## Test APIs with HTML Form and Report
 
 ```
 https://10.180.1.21:4443/api/add_employee
 ```
 
-<img width="1565" alt="Screen Shot 2023-03-10 at 5 41 47 pm" src="https://user-images.githubusercontent.com/39692236/224242781-e933f11f-5bf2-4970-a89e-f868e0cfb898.png">
+<img width="1565" alt="Screen Shot 2023-03-10 at 5 41 47 pm" src="https://user-images.githubusercontent.com/39692236/224250317-964f7b22-9fae-4a76-a857-ab5187f92846.png">
 
 
-### Test Get All Employees using Webpage
+
+### Test Get All Employees with HTML
 
 ```
 https://10.180.1.21:4443/api/getall
 ```
 
-<img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224242815-7c833817-836d-493e-bb68-939e721c3b17.png">
 
+<img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224250341-cb14719b-dd39-4cd8-b91c-ad04214007e3.png">
 
 ## Functions & APIs
 

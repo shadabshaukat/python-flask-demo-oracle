@@ -127,16 +127,32 @@ curl https://10.180.1.21:4443/api/employees/1 -k
 https://10.180.1.21:4443/api/add_employee
 ```
 
+```
+username : user1
+password : password1
+```
+
+
+<img width="392" alt="Screen Shot 2023-03-10 at 7 23 20 pm" src="https://user-images.githubusercontent.com/39692236/224262717-304c76f6-8d9e-414d-9b31-f2827832ffb9.png">
+
+
 <img width="1565" alt="Screen Shot 2023-03-10 at 5 41 47 pm" src="https://user-images.githubusercontent.com/39692236/224250317-964f7b22-9fae-4a76-a857-ab5187f92846.png">
 
 
 
 ### Test Get All Employees with HTML
 
+
 ```
 https://10.180.1.21:4443/api/getall
 ```
 
+```
+username : user2
+password : password2
+```
+
+<img width="396" alt="Screen Shot 2023-03-10 at 7 22 49 pm" src="https://user-images.githubusercontent.com/39692236/224262583-0fe55a7f-5867-4adc-a493-5370e862f5bd.png">
 
 <img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224250341-cb14719b-dd39-4cd8-b91c-ad04214007e3.png">
 

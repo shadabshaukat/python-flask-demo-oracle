@@ -6,14 +6,15 @@ from flask_cors import CORS
 from flask import session, redirect, url_for, request, Response
 import oracledb as cx_Oracle
 
-app = Flask(__name__, template_folder='/home/opc/python-flask-demo-oracle')
+app = Flask(__name__, template_folder='/')
 CORS(app)
 
 # List of API User and Auth Token
 VALID_USERS = {'user1': 'password1', 'user2': 'password2'}
 
 # Connect to the Oracle database
-con = cx_Oracle.connect(user='admin', password='**********',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=*********.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
+con = cx_Oracle.connect(user='admin', password='RAbbithole1234#_',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=g9b8049aad9c64c_y16fuv7vqq9428l5_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
+
 
 @app.route('/api/employees', methods=['GET'])
 def get_employees():
@@ -184,4 +185,4 @@ def delete_employee(id):
 
 if __name__ == '__main__':
     # Start the HTTPS server
-    app.run(host='0.0.0.0', port=4443, ssl_context=('/home/opc/ssl-certs/cert.pem', '/home/opc/ssl-certs/key.pem'))
+    app.run(host='0.0.0.0', port=4443, ssl_context=('cert.pem', 'key.pem'))

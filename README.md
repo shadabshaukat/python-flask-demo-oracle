@@ -10,6 +10,8 @@ First pre-requisite is to ensure your instance has Python3 installed along with 
 ```
   sudo yum install python36
   sudo yum install links
+  sudo yum install openssl
+
   sudo pip3 install flask
   sudo pip3 install flask_cors
   sudo pip3 install six
@@ -26,13 +28,9 @@ First pre-requisite is to ensure your instance has Python3 installed along with 
 As we are creating a secure web server ensure you need SSL certificates. In this example for demo purposes we are creating self-signed certificates but in a production scenario you should have SSL certificates issued from a third party authority.
 
 ```
-sudo yum install openssl
+openssl genrsa -out key.pem 2048
 
-mkdir ~/ssl-certs
-
-openssl genpkey -algorithm RSA -out ~/ssl-certs/key.pem
-
-openssl req -new -x509 -key ~/ssl-certs/key.pem -out ~/ssl-certs/cert.pem
+openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
 
 chmod +r cert.pem key.pem
 

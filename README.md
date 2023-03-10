@@ -96,36 +96,50 @@ This will allow two web pages one for the POST request to the “/api/add_employ
 ```
 
 
-## Test
+## Test APIs using curl
 
 Run the Python script and Test the API’s using curl
 
 ```
 $ python3 ~/main.py 
          * Running on https://10.180.1.21:4443/ (Press CTRL+C to quit)
- 
+ ```
+
+```
 # Get report of all employees 
  curl https://10.180.1.21:4443/api/employees -k
+```
 
+```
 # Add a new employee
  curl -X POST https://10.180.1.21:4443/api/employees -d '{"name":"Shadab M","email":"shadabm@example.com","department":"IT"}' -H "Content-Type: application/json" -k
- 
+```
+
+```
 # Get employee details of a particular employee using id 
  curl https://10.180.1.21:4443/api/employees/1 -k
+```
 
+```
 # Update employee details using id
  curl -X PUT https://10.180.1.21:4443/api/employees/1 -d '{"name":"Michael","email":"michael@example.com","department":"IT"}' -H "Content-Type: application/json" -k
- curl https://10.180.1.21:4443/api/employees/1 -k
+```
+```
+curl https://10.180.1.21:4443/api/employees/1 -k
+```
 
+```
 # Delete employee using id
  curl -X DELETE https://10.180.1.21:4443/api/employees/1 -k
  curl https://10.180.1.21:4443/api/employees/1 -k
+```
 
+```
 # Search employee by email
  curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k
 ```
 
-### Test Add Employee API using Webpage
+### Test APIs using HTML Form and Report
 
 ```
 https://10.180.1.21:4443/api/add_employee

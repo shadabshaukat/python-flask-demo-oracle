@@ -27,6 +27,16 @@ vim main.py
 ```
 
 ```
+#Create table in Autonomous DB
+CREATE TABLE employees (
+    id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR2(255) NOT NULL,
+    email VARCHAR2(255) NOT NULL,
+    department VARCHAR2(255) NOT NULL
+);
+```
+
+```
 #Enable port 4443 on local machine where you are running Docker
 sudo firewall-cmd --permanent --add-port=4443/tcp
 sudo firewall-cmd --reload
@@ -35,12 +45,12 @@ sudo firewall-cmd --zone=public --permanent --list-ports
 
 ```
 #Build the Docker Image
-docker build -t flaskdemo .
+docker build -t oracleflaskdemo .
 ```
 
 ```
 #Run the Docker Container
-docker run -p 4443:4443 flaskdemo
+docker run -p 4443:4443 oracleflaskdemo
 ```
 
 ## Oracle Linux VM Deploy

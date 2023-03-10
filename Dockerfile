@@ -14,10 +14,8 @@ RUN yum install -y postgresql-devel
 
 RUN yum install -y gcc \
     && yum install -y libaio-devel
-    
-# Create a directory for the Flask app
+
 RUN mkdir /app
-WORKDIR /app
 
 ADD requirements.txt .
 COPY requirements.txt ./requirements.txt
@@ -27,13 +25,13 @@ RUN pip3 install -r requirements.txt
 # Set the environment variable for LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH /usr/lib/oracle/19.10/client64/lib/
 
-# Generate SSL certificates on container launch
-CMD openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 \
-        -subj "/C=US/ST=California/L=San Francisco/O=My Company/OU=Engineering/CN=mydomain.com" \
-        -keyout /app/cert.key \
-        -out /app/cert.pem && \
-
 ADD main.py .
 COPY main.py ./main.py
+
+ADD key.pem .
+COPY key.pem ./key.pem
+
+ADD cert.pem .
+COPY cert.pem ./cert.pem
 
 CMD ["python3", "./main.py"]

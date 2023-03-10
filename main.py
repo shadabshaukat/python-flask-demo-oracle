@@ -5,7 +5,7 @@ from flask import render_template
 from flask_cors import CORS
 import oracledb as cx_Oracle
 
-app = Flask(__name__, template_folder='/home/opc')
+app = Flask(__name__, template_folder='/home/opc/python-flask-demo-oracle')
 CORS(app)
 
 # Connect to the Oracle database

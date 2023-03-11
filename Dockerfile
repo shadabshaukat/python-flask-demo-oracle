@@ -33,4 +33,10 @@ ADD add_employee.html .
 
 ADD get_employees.html .
 
+ADD update_employee.html .
+
+ADD confirm_delete_employee.html .
+
+ADD crud_options.html .
+
 CMD ["python3", "./main.py"]

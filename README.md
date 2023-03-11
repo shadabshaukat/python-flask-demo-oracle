@@ -1,34 +1,54 @@
-# Python Flask Demo Oracle
+# Oracle Flask Demo 
 A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
-## Quick Build & Deploy with Docker (Recommended)
+The python-flask-demo-oracle repository contains a simple Flask application that demonstrates how to connect to an Oracle Autonomous database (or any other Oracle Database) and perform basic CRUD (Create, Read, Update, Delete) operations on a database table.
+
+The application consists of a single Flask app defined in the main.py file, which serves as the entry point for the application. The main.py file defines several Flask routes (i.e. URL endpoints) that handle HTTP requests from clients and return HTTP responses.
+
+The main features of the application are:
+
+    Database connection: The app connects to an Oracle database using the python-oracldb library and a DSN (Data Source Name) string that specifies the hostname, port, service name, username, and password for the database connection.
+
+    CRUD operations: The app allows users to perform basic CRUD operations on a database table called employees. Users can add new employees, view all employees, update employee information, and delete employees.
+
+    SSL/TLS encryption: The app uses SSL/TLS encryption to secure HTTP traffic between the client and server. You can use self-signed SSL certificates, and the Flask app is configured to use this certificate to encrypt HTTP traffic.
+
+The repository also contains several HTML templates that define the app's user interface. The base.html template defines the basic layout of the app, while the other templates extend this base template and define the content for specific pages (e.g. the add employee form, the view employees page, etc.).
+
+
+## Quick Build & Deploy with Docker or Podman
+#### 1. Clone the Repo
 
 ```
-#Clone the Repo
 git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
+
 cd python-flask-demo-oracle/
 ```
 
+#### 2. Generate the self-signed certificates
+
 ```
-#Generate the self-signed certificates
 openssl genrsa -out key.pem 2048
+
 openssl req -new -x509 -newkey rsa:2048 -key key.pem -out cert.pem
 
 chmod +r cert.pem key.pem
 ```
   
+#### 3. Check for certificate and key file
+
 ```
-#Check for certificate and key file
 ls -ltr
 ```
-  
+
+#### 4. Replace username,password & connection string in main.py with your Autonomous DB details
 ```
-#Change username,password & connection string in main.py with your Autonomous DB details
 vim main.py
 ```
 
+#### 5. Create table in Autonomous DB
+
 ```
-#Create table in Autonomous DB
 CREATE TABLE employees (
     id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR2(255) NOT NULL,
@@ -37,22 +57,72 @@ CREATE TABLE employees (
 );
 ```
 
+#### 6. Enable port 4443 on local machine where you are running Docker (Linux only)
 ```
-#Enable port 4443 on local machine where you are running Docker
 sudo firewall-cmd --permanent --add-port=4443/tcp
 sudo firewall-cmd --reload
 sudo firewall-cmd --zone=public --permanent --list-ports
 ```
 
+#### 7. Build the Docker Image
+
 ```
-#Build the Docker Image
 docker build -t oracleflaskdemo .
 ```
 
+#### 8. Run the Docker Container
+
 ```
-#Run the Docker Container
 docker run -p 4443:4443 oracleflaskdemo
 ```
+
+#### Note : If you are using Podman instead of Docker, just replaced 'docker' with 'podman' in the commands
+```
+brew install podman
+podman machine init
+podman build -t oracleflaskdemo .
+podman run -p 4443:4443 oracleflaskdemo
+```
+
+## Test APIs with HTML Form and Report
+
+#### Open in browser
+
+```
+https://127.0.0.1:4443/api/add_employee
+```
+
+#### Enter API Username & Password
+```
+Username : user1
+Password : password1
+```
+
+
+<img width="392" alt="Screen Shot 2023-03-10 at 7 23 20 pm" src="https://user-images.githubusercontent.com/39692236/224262717-304c76f6-8d9e-414d-9b31-f2827832ffb9.png">
+
+
+<img width="1565" alt="Screen Shot 2023-03-10 at 5 41 47 pm" src="https://user-images.githubusercontent.com/39692236/224250317-964f7b22-9fae-4a76-a857-ab5187f92846.png">
+
+
+
+### Test Get All Employees with HTML
+
+#### Open in browser
+```
+https://127.0.0.1:4443/api/getall
+```
+
+#### Enter API Username & Password
+```
+Username : user2
+Password : password2
+```
+
+<img width="396" alt="Screen Shot 2023-03-10 at 7 22 49 pm" src="https://user-images.githubusercontent.com/39692236/224262583-0fe55a7f-5867-4adc-a493-5370e862f5bd.png">
+
+<img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224250341-cb14719b-dd39-4cd8-b91c-ad04214007e3.png">
+
 
 ## Oracle Linux VM Deploy 
 
@@ -178,40 +248,6 @@ curl https://10.180.1.21:4443/api/employees/1 -k
  curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k
 ```
 
-## Test APIs with HTML Form and Report
-
-```
-https://10.180.1.21:4443/api/add_employee
-```
-
-```
-username : user1
-password : password1
-```
-
-
-<img width="392" alt="Screen Shot 2023-03-10 at 7 23 20 pm" src="https://user-images.githubusercontent.com/39692236/224262717-304c76f6-8d9e-414d-9b31-f2827832ffb9.png">
-
-
-<img width="1565" alt="Screen Shot 2023-03-10 at 5 41 47 pm" src="https://user-images.githubusercontent.com/39692236/224250317-964f7b22-9fae-4a76-a857-ab5187f92846.png">
-
-
-
-### Test Get All Employees with HTML
-
-
-```
-https://10.180.1.21:4443/api/getall
-```
-
-```
-username : user2
-password : password2
-```
-
-<img width="396" alt="Screen Shot 2023-03-10 at 7 22 49 pm" src="https://user-images.githubusercontent.com/39692236/224262583-0fe55a7f-5867-4adc-a493-5370e862f5bd.png">
-
-<img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224250341-cb14719b-dd39-4cd8-b91c-ad04214007e3.png">
 
 ## Functions & APIs
 

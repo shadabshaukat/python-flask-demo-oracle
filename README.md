@@ -16,7 +16,7 @@ The main features of the application are:
 The repository also contains several HTML templates that define the app's user interface. The base.html template defines the basic layout of the app, while the other templates extend this base template and define the content for specific pages (e.g. the add employee form, the view employees page, etc.).
 
 
-## Quick Build & Deploy with Docker (Recommended)
+## Quick Build & Deploy with Docker or Podman
 #### 1. Clone the Repo
 
 ```

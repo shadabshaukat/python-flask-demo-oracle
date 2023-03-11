@@ -41,7 +41,7 @@ chmod +r cert.pem key.pem
 ls -ltr
 ```
 
-#### 4. Change username,password & connection string in main.py with your Autonomous DB details
+#### 4. Replace username,password & connection string in main.py with your Autonomous DB details
 ```
 vim main.py
 ```
@@ -57,7 +57,7 @@ CREATE TABLE employees (
 );
 ```
 
-#### 6. Enable port 4443 on local machine where you are running Docker (Not required on MacOS)
+#### 6. Enable port 4443 on local machine where you are running Docker (Linux only)
 ```
 sudo firewall-cmd --permanent --add-port=4443/tcp
 sudo firewall-cmd --reload

@@ -78,8 +78,13 @@ docker run -p 4443:4443 oracleflaskdemo
 
 #### Note : If you are using Podman instead of Docker, just replaced 'docker' with 'podman' in the commands
 ```
+# Install Podman on MacOS M1 Pro
 brew install podman
 podman machine init
+podman machine set -m 3072
+podman machine start
+
+# Build Flask App
 podman build -t oracleflaskdemo .
 podman run -p 4443:4443 oracleflaskdemo
 ```
@@ -89,7 +94,7 @@ podman run -p 4443:4443 oracleflaskdemo
 #### Open in browser
 
 ```
-https://127.0.0.1:4443/api/add_employee
+https://127.0.0.1:4443/api/main
 ```
 
 #### Enter API Username & Password
@@ -98,30 +103,10 @@ Username : user1
 Password : password1
 ```
 
+<img width="428" alt="Screen Shot 2023-03-11 at 11 22 25 pm" src="https://user-images.githubusercontent.com/39692236/224484216-72b14f5c-6607-4d23-8d85-8992984956bd.png">
 
-<img width="392" alt="Screen Shot 2023-03-10 at 7 23 20 pm" src="https://user-images.githubusercontent.com/39692236/224262717-304c76f6-8d9e-414d-9b31-f2827832ffb9.png">
+<img width="1439" alt="Screen Shot 2023-03-11 at 11 20 40 pm" src="https://user-images.githubusercontent.com/39692236/224484111-2986bfd0-a731-4d51-8649-fabf96fa5bd1.png">
 
-
-<img width="1565" alt="Screen Shot 2023-03-10 at 5 41 47 pm" src="https://user-images.githubusercontent.com/39692236/224250317-964f7b22-9fae-4a76-a857-ab5187f92846.png">
-
-
-
-### Test Get All Employees with HTML
-
-#### Open in browser
-```
-https://127.0.0.1:4443/api/getall
-```
-
-#### Enter API Username & Password
-```
-Username : user2
-Password : password2
-```
-
-<img width="396" alt="Screen Shot 2023-03-10 at 7 22 49 pm" src="https://user-images.githubusercontent.com/39692236/224262583-0fe55a7f-5867-4adc-a493-5370e862f5bd.png">
-
-<img width="1537" alt="Screen Shot 2023-03-10 at 5 42 05 pm" src="https://user-images.githubusercontent.com/39692236/224250341-cb14719b-dd39-4cd8-b91c-ad04214007e3.png">
 
 
 ## Oracle Linux VM Deploy 
@@ -210,71 +195,4 @@ $ python3 main.py
          * Running on https://10.180.1.21:4443/ (Press CTRL+C to quit)
  ```
 
-
-## Test APIs with curl
-
-
-```
-# Get report of all employees 
- curl https://10.180.1.21:4443/api/employees -k
-```
-
-```
-# Add a new employee
- curl -X POST https://10.180.1.21:4443/api/employees -d '{"name":"Shadab M","email":"shadabm@example.com","department":"IT"}' -H "Content-Type: application/json" -k
-```
-
-```
-# Get employee details of a particular employee using id 
- curl https://10.180.1.21:4443/api/employees/1 -k
-```
-
-```
-# Update employee details using id
- curl -X PUT https://10.180.1.21:4443/api/employees/1 -d '{"name":"Michael","email":"michael@example.com","department":"IT"}' -H "Content-Type: application/json" -k
-```
-```
-curl https://10.180.1.21:4443/api/employees/1 -k
-```
-
-```
-# Delete employee using id
- curl -X DELETE https://10.180.1.21:4443/api/employees/1 -k
- curl https://10.180.1.21:4443/api/employees/1 -k
-```
-
-```
-# Search employee by email
- curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k
-```
-
-
-## Functions & APIs
-
-This is the core python3 code to create a web server with Flask and add the routes for the API’s on the employees table in Oracle.
-
-There are 6 functions in the script, each performing a REST call for GET, PUT, POST and DELETE operations. I’ve included an additional function to add an employee using html form via render_template
-
-```
-GET ALL - def get_employees(): 
-/* Fetches all the employees from Oracle table eg :  curl https://10.180.1.21:4443/api/employees -k */
-
-GET EMP - def get_employee(id):
-/* Fetches a single employee using the id and throws error 404 if employee not found eg : curl https://10.180.1.21:4443/api/employees/1 -k */
-
-ADD EMP - def add_employee():
-/* Adds an employee to the Oracle table and throws error if the same email already exists eg :  curl -X POST https://10.180.1.21:4443/api/employees -d '{"name":"Shadab M","email":"shadabm@example.com","department":"IT"}' -H "Content-Type: application/json" -k */
-
-UPDATE EMP - def update_employee(id):
-/* Updates an employee details but throws 404 error if employee id does not exist eg : curl -X PUT https://10.180.1.21:4443/api/employees/1 -d '{"name":"Michael","email":"michaelm@example.com","department":"IT"}' -H "Content-Type: application/json" -k */
-
-DELETE EMP - def delete_employee(id):
-/* Deletes an employee but throws 404 error if employee not found */ 
-
-GET EMP BY EMAIL - def search_employee(email):
-/* Search an employee by their email address, if employee email is not found it returns 404 error eg :curl https://10.180.1.21:4443/api/employees/search/shadabm@example.com -k */ 
-
-ADD EMP USING HTML FORM - def add_employee_form():
-/* Add an employee using an html form with the Jinga2 flask render_template. The render_template function is used to render an HTML template called "add_employee.html" that contains the form. */
-```
 

@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request
 from flask import render_template
 from flask_cors import CORS
 from flask import session, redirect, url_for, request, Response
-import oracledb as cx_Oracle
+import oracledb 
 
 app = Flask(__name__, template_folder='/')
 CORS(app)
@@ -13,7 +13,7 @@ CORS(app)
 VALID_USERS = {'user1': 'password1', 'user2': 'password2'}
 
 # Connect to the Oracle database
-con = cx_Oracle.connect(user='admin', password='***********',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=*******_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
+con = oracledb.connect(user='admin', password='*******',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=*****_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
 
 
 # HTML Form Method to Create a New Employee
@@ -85,6 +85,7 @@ def update_employee(id):
         cur.close()
         return render_template('update_employee.html', employee=employee)
 
+
 # HTML Method to Delete an Employee
 @app.route('/api/delete_employee/<int:id>', methods=['GET', 'POST'])
 def delete_employee(id):
@@ -128,5 +129,9 @@ def authenticate():
                     {'WWW-Authenticate': 'Basic realm="Login Required"'})
 
 if __name__ == '__main__':
+    # Print out all the routes and their associated URLs
+    for rule in app.url_map.iter_rules():
+        print(f"{rule.endpoint:50s} {rule.methods} {rule.rule}")
+
     # Start the HTTPS server
     app.run(host='0.0.0.0', port=4443, ssl_context=('cert.pem', 'key.pem'))

@@ -7,11 +7,11 @@ The application consists of a single Flask app defined in the main.py file, whic
 
 The main features of the application are:
 
-    Database connection: The app connects to an Oracle database using the python-oracldb library and a DSN (Data Source Name) string that specifies the hostname, port, service name, username, and password for the database connection.
+   1. Database connection: The app connects to an Oracle database using the python-oracldb library and a DSN (Data Source Name) string that specifies the hostname, port, service name, username, and password for the database connection.
 
-    CRUD operations: The app allows users to perform basic CRUD operations on a database table called employees. Users can add new employees, view all employees, update employee information, and delete employees.
+   2. CRUD operations: The app allows users to perform basic CRUD operations on a database table called employees. Users can add new employees, view all employees, update employee information, and delete employees.
 
-    SSL/TLS encryption: The app uses SSL/TLS encryption to secure HTTP traffic between the client and server. You can use self-signed SSL certificates, and the Flask app is configured to use this certificate to encrypt HTTP traffic.
+  3.  SSL/TLS encryption: The app uses SSL/TLS encryption to secure HTTP traffic between the client and server. You can use self-signed SSL certificates, and the Flask app is configured to use this certificate to encrypt HTTP traffic.
 
 The repository also contains several HTML templates that define the app's user interface. The base.html template defines the basic layout of the app, while the other templates extend this base template and define the content for specific pages (e.g. the add employee form, the view employees page, etc.).
 
@@ -89,8 +89,9 @@ podman build -t oracleflaskdemo .
 podman run -p 4443:4443 oracleflaskdemo
 ```
 
-## Test APIs with HTML Form and Report
+# App Testing 
 
+## Main Page 
 #### Open in browser
 
 ```
@@ -106,6 +107,52 @@ Password : password1
 <img width="428" alt="Screen Shot 2023-03-11 at 11 22 25 pm" src="https://user-images.githubusercontent.com/39692236/224484216-72b14f5c-6607-4d23-8d85-8992984956bd.png">
 
 <img width="1439" alt="Screen Shot 2023-03-11 at 11 20 40 pm" src="https://user-images.githubusercontent.com/39692236/224484111-2986bfd0-a731-4d51-8649-fabf96fa5bd1.png">
+
+## Create Employee
+#### Open in browser
+
+```
+https://127.0.0.1:4443/api/add_employee
+```
+
+<img width="1623" alt="Screen Shot 2023-03-12 at 10 54 57 am" src="https://user-images.githubusercontent.com/39692236/224516956-bbbfdfbb-9361-434d-9646-8064c1acc14a.png">
+
+## GETALL Employees
+
+#### Open in browser
+
+```
+https://127.0.0.1:4443/api/getall
+```
+
+
+<img width="1756" alt="Screen Shot 2023-03-12 at 10 55 11 am" src="https://user-images.githubusercontent.com/39692236/224516971-bac05ac8-7e85-4be5-b7e2-d76cdfcdacd1.png">
+
+
+## UPDATE Employee
+
+#### Open in browser
+
+```
+https://127.0.0.1:4443/api/update_employee/101
+```
+
+<img width="1545" alt="Screen Shot 2023-03-12 at 11 07 25 am" src="https://user-images.githubusercontent.com/39692236/224517115-08a16e38-4a16-4856-8d08-b2725b5d202f.png">
+
+
+<img width="1709" alt="Screen Shot 2023-03-12 at 11 10 52 am" src="https://user-images.githubusercontent.com/39692236/224517167-9d1a16a8-f040-4a12-9e93-ae96ef5e482b.png">
+
+
+## DELETE Employee
+
+#### Open in browser
+
+```
+https://127.0.0.1:4443/api/delete_employee/101
+```
+
+<img width="886" alt="Screen Shot 2023-03-12 at 11 11 33 am" src="https://user-images.githubusercontent.com/39692236/224517187-ca26fed8-de20-4f75-9507-83a7ae453806.png">
+
 
 
 

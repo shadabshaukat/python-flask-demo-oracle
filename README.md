@@ -1,4 +1,4 @@
-# Build APIs on Oracle Database with Flask - Sample App 
+# RESTful APIs on Oracle Database with Python Flask - Demo App 
 A Demo App build with Python3, Flask Package and Oracle Autonomous Database
 
 The python-flask-demo-oracle repository contains a simple Flask application that demonstrates how to connect to an Oracle Autonomous database (or any other Oracle Database) and perform basic CRUD (Create, Read, Update, Delete) operations on a database table.
@@ -117,7 +117,7 @@ https://127.0.0.1:4443/api/add_employee
 
 <img width="1623" alt="Screen Shot 2023-03-12 at 10 54 57 am" src="https://user-images.githubusercontent.com/39692236/224516956-bbbfdfbb-9361-434d-9646-8064c1acc14a.png">
 
-## GETALL Employees
+## READ Employees
 
 #### Open in browser
 

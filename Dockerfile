@@ -39,4 +39,8 @@ ADD confirm_delete_employee.html .
 
 ADD crud_options.html .
 
+ADD search_employee.html .
+
+ADD employee_not_found.html .
+
 CMD ["python3", "./main.py"]

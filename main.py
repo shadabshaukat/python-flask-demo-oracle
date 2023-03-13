@@ -55,6 +55,8 @@ def get_all():
         return authenticate()
 
     cur = con.cursor()
+    cur.prefetchrows = 100
+    cur.arraysize = 100
     cur.execute("SELECT * FROM employees")
     rows = cur.fetchall()
     employees = []
@@ -120,6 +122,30 @@ def crud_options():
         return authenticate()
 
     return render_template('crud_options.html')
+
+# HTML Method to Search for an Employee by ID
+@app.route('/api/search_employee/<int:id>', methods=['GET', 'POST'])
+def search_employee(id):
+    # Require authentication for all requests
+    auth = request.authorization
+    if not auth or not check_auth(auth.username, auth.password):
+        return authenticate()
+
+    if request.method == 'POST':
+        cur = con.cursor()
+        cur.execute('SELECT * FROM employees WHERE id=:id', {'id': id})
+        employee = cur.fetchone()
+        cur.close()
+
+        if employee is None:
+            # Display a message if the employee is not found
+            return render_template('employee_not_found.html', id=id)
+        else:
+            # Display the employee details if found
+            return render_template('search_employee.html', employee=employee)
+    else:
+        # Create an empty employee object if a GET request is received
+        return render_template('search_employee.html', employee=None)
 
 
 def check_auth(username, password):

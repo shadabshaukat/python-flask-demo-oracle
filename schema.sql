@@ -78,6 +78,7 @@ END;
 BEGIN
     add_employees(50);
 END;
+/
 
 -- Employees Salary Table 
 CREATE TABLE employees_salary (
@@ -108,6 +109,7 @@ END;
 BEGIN
   generate_employees_salary(50); -- generate 50 random records
 END;
+/
 
 -- Cleanup 
 -- drop table employees;

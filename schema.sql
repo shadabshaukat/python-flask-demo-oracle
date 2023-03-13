@@ -48,3 +48,8 @@ END;
 BEGIN
   generate_employees_salary(10); -- generate 10 random records
 END;
+
+-- Cleanup 
+drop table employees;
+drop table employees_salary;
+drop procedure generate_employees_salary;

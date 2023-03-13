@@ -6,7 +6,7 @@ CREATE TABLE employees (
     department VARCHAR2(255) NOT NULL
 );
 
--- Insert 10 records 'employees' table 
+-- Insert 50 records in 'employees' table 
 INSERT INTO employees (name, email, department) VALUES ('John Doe', 'john.doe@example.com', 'Sales');
 INSERT INTO employees (name, email, department) VALUES ('Jane Smith', 'jane.smith@example.com', 'Marketing');
 INSERT INTO employees (name, email, department) VALUES ('Bob Johnson', 'bob.johnson@example.com', 'Finance');
@@ -17,6 +17,47 @@ INSERT INTO employees (name, email, department) VALUES ('Mike Davis', 'mike.davi
 INSERT INTO employees (name, email, department) VALUES ('Karen Wilson', 'karen.wilson@example.com', 'Finance');
 INSERT INTO employees (name, email, department) VALUES ('Tom Johnson', 'tom.johnson@example.com', 'Human Resources');
 INSERT INTO employees (name, email, department) VALUES ('Lisa Chen', 'lisa.chen@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('David Davis', 'david.davis@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Michelle Rodriguez', 'michelle.rodriguez@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Christopher Smith', 'christopher.smith@example.com', 'Finance');
+INSERT INTO employees (name, email, department) VALUES ('Samantha Brown', 'samantha.brown@example.com', 'Human Resources');
+INSERT INTO employees (name, email, department) VALUES ('Charles Kim', 'charles.kim@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('Alexandra Taylor', 'alexandra.taylor@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Richard Wilson', 'richard.wilson@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Jennifer Lee', 'jennifer.lee@example.com', 'Finance');
+INSERT INTO employees (name, email, department) VALUES ('Matthew Jones', 'matthew.jones@example.com', 'Human Resources');
+INSERT INTO employees (name, email, department) VALUES ('Ava Chen', 'ava.chen@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('William Davis', 'william.davis@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Natalie Nguyen', 'natalie.nguyen@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Joseph Garcia', 'joseph.garcia@example.com', 'Finance');
+INSERT INTO employees (name, email, department) VALUES ('Rachel Martin', 'rachel.martin@example.com', 'Human Resources');
+INSERT INTO employees (name, email, department) VALUES ('Christian Kim', 'christian.kim@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('Hannah Rodriguez', 'hannah.rodriguez@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Anthony Johnson', 'anthony.johnson@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Sophia Wilson', 'sophia.wilson@example.com', 'Finance');
+INSERT INTO employees (name, email, department) VALUES ('Ethan Chen', 'ethan.chen@example.com', 'Human Resources');
+INSERT INTO employees (name, email, department) VALUES ('Madison Smith', 'madison.smith@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('Oliver Davis', 'oliver.davis@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Grace Nguyen', 'grace.nguyen@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Daniel Garcia', 'daniel.garcia@example.com', 'Finance');
+INSERT INTO employees (name, email, department) VALUES ('Isabella Martin', 'isabella.martin@example.com', 'Human Resources');
+INSERT INTO employees (name, email, department) VALUES ('Mia Kim', 'mia.kim@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('Lucas Rodriguez', 'lucas.rodriguez@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Victoria Johnson', 'victoria.johnson@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('David Wilson', 'david.wilson@example.com','Engineering');
+INSERT INTO employees (name, email, department) VALUES ('Steven Nguyen', 'steven.nguyen@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Amy Kim', 'amy.kim@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('Anna Martinez', 'anna.martinez@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Kevin Kim', 'kevin.kim@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Catherine Davis', 'catherine.davis@example.com', 'Finance');
+INSERT INTO employees (name, email, department) VALUES ('Robert Nguyen', 'robert.nguyen@example.com', 'Human Resources');
+INSERT INTO employees (name, email, department) VALUES ('Karen Clark', 'karen.clark@example.com', 'Engineering');
+INSERT INTO employees (name, email, department) VALUES ('Mike Wilson', 'mike.wilson@example.com', 'Sales');
+INSERT INTO employees (name, email, department) VALUES ('Rachel Lee', 'rachel.lee@example.com', 'Marketing');
+INSERT INTO employees (name, email, department) VALUES ('Thomas Johnson', 'thomas.johnson@example.com', 'Finance');
+INSERT INTO employees (name, email, department) VALUES ('Emily White', 'emily.white@example.com', 'Human Resources');
+INSERT INTO employees (name, email, department) VALUES ('Brian Brown', 'brian.brown@example.com', 'Engineering');
+
 commit;
 
 -- Employees Salary Table 
@@ -46,7 +87,7 @@ END;
 
 -- Generate Sample Data
 BEGIN
-  generate_employees_salary(10); -- generate 10 random records
+  generate_employees_salary(50); -- generate 50 random records
 END;
 
 -- Cleanup 

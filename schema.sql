@@ -57,8 +57,27 @@ INSERT INTO employees (name, email, department) VALUES ('Rachel Lee', 'rachel.le
 INSERT INTO employees (name, email, department) VALUES ('Thomas Johnson', 'thomas.johnson@example.com', 'Finance');
 INSERT INTO employees (name, email, department) VALUES ('Emily White', 'emily.white@example.com', 'Human Resources');
 INSERT INTO employees (name, email, department) VALUES ('Brian Brown', 'brian.brown@example.com', 'Engineering');
-
 commit;
+
+-- Procedure to Generate Sample Data
+CREATE OR REPLACE PROCEDURE add_employees (
+    n IN NUMBER
+)
+AS
+    departments employees.department%TYPE := 'Sales,Marketing,Finance,Human Resources,Engineering';
+BEGIN
+    FOR i IN 1..n LOOP
+        INSERT INTO employees (name, email, department)
+        VALUES ('Employee ' || i, 'employee' || i || '@example.com', REGEXP_SUBSTR(departments,'[^,]+',1,ROUND(DBMS_RANDOM.VALUE(1,5))));
+    END LOOP;
+    COMMIT;
+END;
+/
+
+-- Generate Sample Employee Data
+BEGIN
+    add_employees(50);
+END;
 
 -- Employees Salary Table 
 CREATE TABLE employees_salary (
@@ -85,7 +104,7 @@ BEGIN
 END;
 /
 
--- Generate Sample Data
+-- Generate Sample Employee Salary Data
 BEGIN
   generate_employees_salary(50); -- generate 50 random records
 END;
@@ -94,3 +113,4 @@ END;
 -- drop table employees;
 -- drop table employees_salary;
 -- drop procedure generate_employees_salary;
+-- drop procedure add_employees;

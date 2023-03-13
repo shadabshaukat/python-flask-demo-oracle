@@ -159,6 +159,12 @@ https://127.0.0.1:4443/api/delete_employee/101
 
 <img width="886" alt="Screen Shot 2023-03-12 at 11 11 33 am" src="https://user-images.githubusercontent.com/39692236/224517187-ca26fed8-de20-4f75-9507-83a7ae453806.png">
 
+## Search Employee
+
+<img width="1448" alt="Screen Shot 2023-03-14 at 12 49 03 am" src="https://user-images.githubusercontent.com/39692236/224721423-1c87d241-1891-4e37-b490-19a9cee03864.png">
+
+
+<img width="1345" alt="Screen Shot 2023-03-14 at 12 47 37 am" src="https://user-images.githubusercontent.com/39692236/224720838-80bcee7e-b7c5-4f80-bd3d-77f16444cb2a.png">
 
 
 

@@ -6,6 +6,11 @@ from flask_cors import CORS
 from flask import session, redirect, url_for, request, Response
 import oracledb 
 
+# Environment Variables for Oracle Database Connectivity
+user = os.environ['ORACLE_USER']
+password = os.environ['ORACLE_PASSWORD']
+dsn = os.environ['ORACLE_DSN']
+
 app = Flask(__name__, template_folder='/')
 CORS(app)
 
@@ -13,8 +18,7 @@ CORS(app)
 VALID_USERS = {'user1': 'password1', 'user2': 'password2'}
 
 # Connect to the Oracle database
-con = oracledb.connect(user='admin', password='*******',dsn= '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=*****_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))')
-
+con = oracledb.connect(user=user, password=password, dsn=dsn)
 
 # HTML Form Method to Create a New Employee
 @app.route('/api/add_employee', methods=['GET', 'POST'])

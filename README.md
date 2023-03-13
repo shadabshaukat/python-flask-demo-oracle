@@ -243,6 +243,14 @@ This will allow two web pages one for the POST request to the “/api/add_employ
 
 ### 7. Run the Python script
 
+Set Oracle Database Environment Variables
+
+```
+export ORACLE_USER=admin 
+export ORACLE_PASSWORD=YourPass@word1234#_ 
+export ORACLE_DSN="(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=*****_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))" 
+```
+
 ```
 $ python3 main.py 
          * Running on https://10.180.1.21:4443/ (Press CTRL+C to quit)

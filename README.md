@@ -20,9 +20,8 @@ The repository also contains several HTML templates that define the app's user i
 #### 1. Clone the Repo
 
 ```
-git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git
+git clone https://github.com/shadabshaukat/python-flask-demo-oracle.git && cd python-flask-demo-oracle/
 
-cd python-flask-demo-oracle/
 ```
 
 #### 2. Generate the self-signed certificates

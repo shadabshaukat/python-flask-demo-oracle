@@ -1,4 +1,4 @@
--- Employees Table 
+-- Employees Table
 CREATE TABLE employees (
     id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR2(255) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE employees (
     department VARCHAR2(255) NOT NULL
 );
 
--- Insert 50 records in 'employees' table 
+-- Insert 50 records in 'employees' table
 INSERT INTO employees (name, email, department) VALUES ('John Doe', 'john.doe@example.com', 'Sales');
 INSERT INTO employees (name, email, department) VALUES ('Jane Smith', 'jane.smith@example.com', 'Marketing');
 INSERT INTO employees (name, email, department) VALUES ('Bob Johnson', 'bob.johnson@example.com', 'Finance');
@@ -80,7 +80,7 @@ BEGIN
 END;
 /
 
--- Employees Salary Table 
+-- Employees Salary Table
 CREATE TABLE employees_salary (
     id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     employee_id NUMBER NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE employees_salary (
     end_date DATE NOT NULL,
     bonus FLOAT NOT NULL
     );
-    
+
 -- Procedure to Generate Sample Data
 CREATE OR REPLACE PROCEDURE generate_employees_salary(n IN NUMBER) AS
 BEGIN
@@ -111,7 +111,7 @@ BEGIN
 END;
 /
 
--- Cleanup 
+-- Cleanup
 -- drop table employees;
 -- drop table employees_salary;
 -- drop procedure generate_employees_salary;

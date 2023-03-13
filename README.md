@@ -67,13 +67,16 @@ sudo firewall-cmd --zone=public --permanent --list-ports
 #### 7. Build the Docker Image
 
 ```
-docker build -t oracleflaskdemo .
+ docker build -t oracleflaskdemo .
 ```
 
 #### 8. Run the Docker Container
 
 ```
-docker run -p 4443:4443 oracleflaskdemo
+docker run -p 4443:4443 \
+-e ORACLE_USER=admin \
+-e ORACLE_PASSWORD=YourP@ssword1234#_ \
+-e ORACLE_DSN="(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=******_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))" oracleflaskdemo
 ```
 
 #### Note : If you are using Podman instead of Docker, just replaced 'docker' with 'podman' in the commands
@@ -86,7 +89,11 @@ podman machine start
 
 # Build Flask App
 podman build -t oracleflaskdemo .
-podman run -p 4443:4443 oracleflaskdemo
+
+podman run -p 4443:4443 \
+-e ORACLE_USER=admin \
+-e ORACLE_PASSWORD=YourP@ssword1234#_ \
+-e ORACLE_DSN="(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=******_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))" oracleflaskdemo
 ```
 
 # App Testing 

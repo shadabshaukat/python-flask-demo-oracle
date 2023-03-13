@@ -55,6 +55,8 @@ def get_all():
         return authenticate()
 
     cur = con.cursor()
+    cur.prefetchrows = 100
+    cur.arraysize = 100
     cur.execute("SELECT * FROM employees")
     rows = cur.fetchall()
     employees = []
